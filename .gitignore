@@ -1,0 +1,12 @@
+# python cache files
+__pycache__/
+*.pyc
+
+# build artifacts
+build/
+dist/
+stage_left.egg-info/
+
+# test coverage
+.coverage
+coverage.xml
