@@ -11,11 +11,11 @@ repository = "https://github.com/chris48s/stage-left"
 python = "^3.7"
 
 [tool.poetry.dev-dependencies]
-isort = "^5.7"
-flake8 = "^3.8.4"
-black = { version = "==20.8b1", allow-prereleases = true }
-pytest = "^6.2.2"
-pytest-cov = "^2.11.1"
+isort = "^5.10"
+flake8 = "^5.0.4"
+black = "==22.6.0"
+pytest = "^7.1.2"
+pytest-cov = "^3.0.0"
 
 [build-system]
 requires = ["poetry>=1.0.2"]
