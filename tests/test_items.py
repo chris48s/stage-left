@@ -26,6 +26,7 @@ valid_items = """[ ] Open
        more spaces
 [ ] And this one ...
              as well
+[ ] And this one uses a\r\n    Windows linebreak
 """  # noqa:W291
 
 no_indent = """[ ] The next line is ...
@@ -169,6 +170,13 @@ def test_items_valid():
                 Item(
                     state=State.OPEN,
                     description="And this one ...\n         as well",
+                    tags=[],
+                    priority=None,
+                    due_date=None,
+                ),
+                Item(
+                    state=State.OPEN,
+                    description="And this one uses a\nWindows linebreak",
                     tags=[],
                     priority=None,
                     due_date=None,
