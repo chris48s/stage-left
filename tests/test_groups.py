@@ -1,6 +1,6 @@
 import pytest
 
-from stage_left.parser import parse
+from stage_left.parser import parse_text
 from stage_left.types import Group, Item, ParseError, State
 
 valid_groups = """
@@ -125,10 +125,10 @@ def test_groups_valid():
         ),
         Group(items=[], title="Empty Group"),
     ]
-    assert parse(valid_groups) == expected
+    assert parse_text(valid_groups) == expected
 
 
 @pytest.mark.parametrize("group", invalid_groups)
 def test_groups_invalid(group):
     with pytest.raises(ParseError):
-        parse(group)
+        parse_text(group)

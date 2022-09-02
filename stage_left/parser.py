@@ -82,5 +82,10 @@ def parse_lines(lines):
     return groups
 
 
-def parse(text):
+def parse_text(text):
     return parse_lines(classify_lines(text.splitlines()))
+
+
+def parse_file(file_):
+    # TODO
+    pass

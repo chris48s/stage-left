@@ -1,6 +1,6 @@
 import pytest
 
-from stage_left.parser import parse
+from stage_left.parser import parse_text
 from stage_left.types import Group, Item, ParseError, State
 
 valid_items = """[ ] Open
@@ -185,10 +185,10 @@ def test_items_valid():
             title="",
         )
     ]
-    assert parse(valid_items) == expected
+    assert parse_text(valid_items) == expected
 
 
 @pytest.mark.parametrize("item", invalid_items)
 def test_items_invalid(item):
     with pytest.raises(ParseError):
-        parse(item)
+        parse_text(item)
