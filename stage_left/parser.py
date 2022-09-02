@@ -40,7 +40,8 @@ def classify_lines(lines):
     return classified_lines
 
 
-def parse_item(line, tail):
+def parse_item(lines):
+    line, *tail = lines
     text = line.text[4:]
     for continuation_line in tail:
         if continuation_line.line_type != LineType.ITEM_CONTINUATION:
@@ -77,7 +78,7 @@ def parse_lines(lines):
             groups.append(current_group)
 
         if line.line_type == LineType.ITEM_START:
-            current_group.items.append(parse_item(line, lines[index + 1 :]))
+            current_group.items.append(parse_item(lines[index:]))
 
     return groups
 
