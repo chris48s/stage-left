@@ -45,7 +45,7 @@ def parse_tags(text):
 
 
 def parse_priority(text):
-    return None
+    return 0
 
 
 def parse_due_date(text):

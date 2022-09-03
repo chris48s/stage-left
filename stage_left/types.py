@@ -29,7 +29,7 @@ class Item:
     state: State
     description: str
     tags: list = field(default_factory=list)
-    priority: Optional[int] = None
+    priority: int = 0
     # TODO: this is a str for now,
     # investigate making it a datetime later
     due_date: Optional[str] = None
