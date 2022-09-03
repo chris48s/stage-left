@@ -1,7 +1,32 @@
+import re
+import sys
+import unicodedata
+
 from stage_left.types import Group, Item, Line, LineType, ParseError, State
 
 ALLOWED_ITEM_STARTS = [f"[{state.value}] " for state in State]
 ALLOWED_ITEM_LINES = [s.strip() for s in ALLOWED_ITEM_STARTS]
+UNICODE_PUNCTUATION = "".join(
+    [
+        chr(i)
+        for i in range(sys.maxunicode)
+        if unicodedata.category(chr(i)).startswith("P") and chr(i) not in ["-", "/"]
+    ]
+)
+P = UNICODE_PUNCTUATION
+DUE_DATE_REGEXES = [
+    # TODO:
+    # these regular expressions are quite crude
+    # e.g: they will accept 2022-02-31 as a "date"
+    # the next step to making this better
+    # is to try and parse the matches into a date object
+    r"([ " + P + r"]|^)-> (\d{4}-\d{2}-\d{2})(?=[ " + P + r"]|$)",
+    r"([ " + P + r"]|^)-> (\d{4}/\d{2}/\d{2})(?=[ " + P + r"]|$)",
+    r"([ " + P + r"]|^)-> (\d{4}[-/]\d{2})(?=[ " + P + r"]|$)",
+    r"([ " + P + r"]|^)-> (\d{4}[-/]W\d{2})(?=[ " + P + r"]|$)",
+    r"([ " + P + r"]|^)-> (\d{4}[-/]Q\d{1})(?=[ " + P + r"]|$)",
+    r"([ " + P + r"]|^)-> (\d{4})(?=[ " + P + r"]|$)",
+]
 
 
 def classify_line(line, prev_line_type, index):
@@ -73,6 +98,10 @@ def parse_priority(text):
 
 
 def parse_due_date(text):
+    for regex in DUE_DATE_REGEXES:
+        matches = re.search(regex, text)
+        if matches:
+            return matches[2]
     return None
 
 
@@ -83,7 +112,7 @@ def parse_item(lines):
         if continuation_line.line_type != LineType.ITEM_CONTINUATION:
             break
         text += "\n" + continuation_line.text[4:]
-    # TODO: extract tags and due date
+    # TODO: extract tags
     tags = parse_tags(text)
     priority = parse_priority(line.text[4:])
     due_date = parse_due_date(text)
