@@ -45,7 +45,31 @@ def parse_tags(text):
 
 
 def parse_priority(text):
-    return 0
+    head, *_ = text.split(" ")
+
+    if len(head.strip("!.")) > 0:
+        return 0
+
+    if len(head) > 0 and head[0] == ".":
+        # left-padded
+        stripped = head.lstrip(".")
+        if "." in stripped:
+            return 0
+        return stripped.count("!")
+
+    if len(head) > 0 and head[-1] == ".":
+        # right-padded
+        stripped = head.rstrip(".")
+        if "." in stripped:
+            return 0
+        return stripped.count("!")
+
+    if "." in head:
+        # neither left-padded nor night-padded
+        # but contains padding character (invalid)
+        return 0
+
+    return head.count("!")
 
 
 def parse_due_date(text):
@@ -59,9 +83,9 @@ def parse_item(lines):
         if continuation_line.line_type != LineType.ITEM_CONTINUATION:
             break
         text += "\n" + continuation_line.text[4:]
-    # TODO: extract tags, priority and due date
+    # TODO: extract tags and due date
     tags = parse_tags(text)
-    priority = parse_priority(text)
+    priority = parse_priority(line.text[4:])
     due_date = parse_due_date(text)
     return Item(
         state=State(line.text[1]),
