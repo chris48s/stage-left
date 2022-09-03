@@ -40,6 +40,18 @@ def classify_lines(lines):
     return classified_lines
 
 
+def parse_tags(text):
+    return []
+
+
+def parse_priority(text):
+    return None
+
+
+def parse_due_date(text):
+    return None
+
+
 def parse_item(lines):
     line, *tail = lines
     text = line.text[4:]
@@ -48,7 +60,16 @@ def parse_item(lines):
             break
         text += "\n" + continuation_line.text[4:]
     # TODO: extract tags, priority and due date
-    return Item(state=State(line.text[1]), description=text)
+    tags = parse_tags(text)
+    priority = parse_priority(text)
+    due_date = parse_due_date(text)
+    return Item(
+        state=State(line.text[1]),
+        description=text,
+        tags=tags,
+        priority=priority,
+        due_date=due_date,
+    )
 
 
 def parse_lines(lines):
