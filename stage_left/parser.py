@@ -20,11 +20,11 @@ DUE_DATE_REGEXES = [
     # e.g: they will accept 2022-02-31 as a "date"
     # the next step to making this better
     # is to try and parse the matches into a date object
-    r"([ " + P + r"]|^)-> (\d{4}-\d{2}-\d{2})(?=[ " + P + r"]|$)",
-    r"([ " + P + r"]|^)-> (\d{4}/\d{2}/\d{2})(?=[ " + P + r"]|$)",
-    r"([ " + P + r"]|^)-> (\d{4}[-/]\d{2})(?=[ " + P + r"]|$)",
-    r"([ " + P + r"]|^)-> (\d{4}[-/]W\d{2})(?=[ " + P + r"]|$)",
-    r"([ " + P + r"]|^)-> (\d{4}[-/]Q\d{1})(?=[ " + P + r"]|$)",
+    r"([ " + P + r"]|^)-> (\d{4}-\d{2}-\d{2})(?=[ " + P + r"]|$)",  # yyyy-mm-dd
+    r"([ " + P + r"]|^)-> (\d{4}/\d{2}/\d{2})(?=[ " + P + r"]|$)",  # yyyy/mm/dd
+    r"([ " + P + r"]|^)-> (\d{4}[-/]\d{2})(?=[ " + P + r"]|$)",  # yyyy-mm or yyyy/mm
+    r"([ " + P + r"]|^)-> (\d{4}[-/]W\d{2})(?=[ " + P + r"]|$)",  # yyyy-Www or yyyy/Www
+    r"([ " + P + r"]|^)-> (\d{4}[-/]Q\d{1})(?=[ " + P + r"]|$)",  # yyyy-Qq or yyyy/Qq
     r"([ " + P + r"]|^)-> (\d{4})(?=[ " + P + r"]|$)",
 ]
 
