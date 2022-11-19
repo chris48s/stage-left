@@ -28,14 +28,14 @@ class Group:
 class Item:
     state: State
     description: str
-    tags: list = field(default_factory=list)
+    tags: set = field(default_factory=set)
     priority: int = 0
     # TODO: this is a str for now,
     # investigate making it a datetime later
     due_date: Optional[str] = None
 
 
-@dataclass()
+@dataclass(frozen=True)
 class Tag:
     value: Optional[str] = None
     key: Optional[str] = None

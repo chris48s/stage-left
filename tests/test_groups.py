@@ -54,14 +54,14 @@ def test_groups_valid():
                 Item(
                     state=State.OPEN,
                     description="Item 1 of group",
-                    tags=[],
+                    tags=set(),
                     priority=0,
                     due_date=None,
                 ),
                 Item(
                     State.OPEN,
                     description="Item 2 of group",
-                    tags=[],
+                    tags=set(),
                     priority=0,
                     due_date=None,
                 ),
@@ -73,7 +73,7 @@ def test_groups_valid():
                 Item(
                     State.OPEN,
                     description="Item of another group",
-                    tags=[],
+                    tags=set(),
                     priority=0,
                     due_date=None,
                 )
@@ -85,14 +85,14 @@ def test_groups_valid():
                 Item(
                     State.OPEN,
                     description="Item 1",
-                    tags=[],
+                    tags=set(),
                     priority=0,
                     due_date=None,
                 ),
                 Item(
                     State.OPEN,
                     description="Item 2",
-                    tags=[],
+                    tags=set(),
                     priority=0,
                     due_date=None,
                 ),
@@ -104,7 +104,7 @@ def test_groups_valid():
                 Item(
                     State.OPEN,
                     description="Item",
-                    tags=[],
+                    tags=set(),
                     priority=0,
                     due_date=None,
                 )
@@ -116,7 +116,7 @@ def test_groups_valid():
                 Item(
                     State.OPEN,
                     description="Item",
-                    tags=[],
+                    tags=set(),
                     priority=0,
                     due_date=None,
                 )

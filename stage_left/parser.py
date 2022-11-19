@@ -2,31 +2,59 @@ import re
 import sys
 import unicodedata
 
-from stage_left.types import Group, Item, Line, LineType, ParseError, State
+from stage_left.types import Group, Item, Line, LineType, ParseError, State, Tag
 
 ALLOWED_ITEM_STARTS = [f"[{state.value}] " for state in State]
 ALLOWED_ITEM_LINES = [s.strip() for s in ALLOWED_ITEM_STARTS]
-UNICODE_PUNCTUATION = "".join(
+
+# unicode punctuation
+DATEP = "".join(
     [
         chr(i)
         for i in range(sys.maxunicode)
         if unicodedata.category(chr(i)).startswith("P") and chr(i) not in ["-", "/"]
     ]
 )
-P = UNICODE_PUNCTUATION
+P = "".join(
+    [
+        chr(i)
+        for i in range(sys.maxunicode)
+        if unicodedata.category(chr(i)).startswith("P") and chr(i) not in ["-"]
+    ]
+)
+
 DUE_DATE_REGEXES = [
     # TODO:
     # these regular expressions are quite crude
     # e.g: they will accept 2022-02-31 as a "date"
     # the next step to making this better
     # is to try and parse the matches into a date object
-    r"([ " + P + r"]|^)-> (\d{4}-\d{2}-\d{2})(?=[ " + P + r"]|$)",  # yyyy-mm-dd
-    r"([ " + P + r"]|^)-> (\d{4}/\d{2}/\d{2})(?=[ " + P + r"]|$)",  # yyyy/mm/dd
-    r"([ " + P + r"]|^)-> (\d{4}[-/]\d{2})(?=[ " + P + r"]|$)",  # yyyy-mm or yyyy/mm
-    r"([ " + P + r"]|^)-> (\d{4}[-/]W\d{2})(?=[ " + P + r"]|$)",  # yyyy-Www or yyyy/Www
-    r"([ " + P + r"]|^)-> (\d{4}[-/]Q\d{1})(?=[ " + P + r"]|$)",  # yyyy-Qq or yyyy/Qq
-    r"([ " + P + r"]|^)-> (\d{4})(?=[ " + P + r"]|$)",
+    #
+    # yyyy-mm-dd
+    r"([ " + DATEP + r"]|^)-> (\d{4}-\d{2}-\d{2})(?=[ " + DATEP + r"]|$)",
+    # yyyy/mm/dd
+    r"([ " + DATEP + r"]|^)-> (\d{4}/\d{2}/\d{2})(?=[ " + DATEP + r"]|$)",
+    # yyyy-mm or yyyy/mm
+    r"([ " + DATEP + r"]|^)-> (\d{4}[-/]\d{2})(?=[ " + DATEP + r"]|$)",
+    # yyyy-Www or yyyy/Www
+    r"([ " + DATEP + r"]|^)-> (\d{4}[-/]W\d{2})(?=[ " + DATEP + r"]|$)",
+    # yyyy-Qq or yyyy/Qq
+    r"([ " + DATEP + r"]|^)-> (\d{4}[-/]Q\d{1})(?=[ " + DATEP + r"]|$)",
+    r"([ " + DATEP + r"]|^)-> (\d{4})(?=[ " + DATEP + r"]|$)",
 ]
+
+VALUE_ONLY_TAG_REGEX = re.compile(
+    r"([ " + P + r"]|^)\#([\w\d_-]+)(?=[^\w\d_-]|$)", re.U
+)
+DOUBLE_QUOTED_KEY_VALUE_TAG_REGEX = re.compile(
+    r"([ " + P + r"]|^)\#([\w\d_-]+)=(\".*?\")", re.U
+)
+SINGLE_QUOTED_KEY_VALUE_TAG_REGEX = re.compile(
+    r"([ " + P + r"]|^)\#([\w\d_-]+)=('.*?')", re.U
+)
+UNQUOTED_KEY_VALUE_TAG_REGEX = re.compile(
+    r"([ " + P + r"]|^)\#([\w\d_-]+)=([\w\d_-]*)(?=[ " + P + r"]|$)", re.U
+)
 
 
 def classify_line(line, prev_line_type, index):
@@ -66,7 +94,30 @@ def classify_lines(lines):
 
 
 def parse_tags(text):
-    return []
+    temp = text
+    tags = set()
+
+    matches = re.findall(SINGLE_QUOTED_KEY_VALUE_TAG_REGEX, temp)
+    temp = re.sub(SINGLE_QUOTED_KEY_VALUE_TAG_REGEX, "", temp)
+    for match in matches:
+        tags.add(Tag(key=match[1], value=match[2].lstrip("'").rstrip("'")))
+
+    matches = re.findall(DOUBLE_QUOTED_KEY_VALUE_TAG_REGEX, temp)
+    temp = re.sub(DOUBLE_QUOTED_KEY_VALUE_TAG_REGEX, "", temp)
+    for match in matches:
+        tags.add(Tag(key=match[1], value=match[2].lstrip('"').rstrip('"')))
+
+    matches = re.findall(UNQUOTED_KEY_VALUE_TAG_REGEX, temp)
+    temp = re.sub(UNQUOTED_KEY_VALUE_TAG_REGEX, "", temp)
+    for match in matches:
+        tags.add(Tag(key=match[1], value=match[2]))
+
+    matches = re.findall(VALUE_ONLY_TAG_REGEX, temp)
+    temp = re.sub(VALUE_ONLY_TAG_REGEX, "", temp)
+    for match in matches:
+        tags.add(Tag(value=match[1]))
+
+    return tags
 
 
 def parse_priority(text):
@@ -112,7 +163,7 @@ def parse_item(lines):
         if continuation_line.line_type != LineType.ITEM_CONTINUATION:
             break
         text += "\n" + continuation_line.text[4:]
-    # TODO: extract tags
+
     tags = parse_tags(text)
     priority = parse_priority(line.text[4:])
     due_date = parse_due_date(text)
