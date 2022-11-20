@@ -8,7 +8,7 @@ _UNICODE_PUNCTUATION = [
     if unicodedata.category(chr(i)).startswith("P")
 ]
 
-_TAG_UNICODE_PUNCTUATION = "".join([c for c in _UNICODE_PUNCTUATION if c != "-"])
+_TAG_UNICODE_PUNCTUATION = "".join([c for c in _UNICODE_PUNCTUATION])
 _TAG_START = r"([ " + _TAG_UNICODE_PUNCTUATION + r"]|^)\#"
 _TAG_KEY = r"([\w\d_-]+)"
 
