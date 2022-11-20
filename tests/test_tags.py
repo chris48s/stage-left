@@ -20,6 +20,7 @@ valid_tags = [
     ["[ ] #今日は", {Tag(value="今日は")}],
     ["[ ] #გამარჯობა", {Tag(value="გამარჯობა")}],
     ["[ ] This #text contains #tags", {Tag(value="text"), Tag(value="tags")}],
+    ["[ ] This#text contains#tags", {Tag(value="text"), Tag(value="tags")}],
     [
         valid_multi_line_tags,
         {
@@ -31,6 +32,7 @@ valid_tags = [
     ],
     ["[ ] This is a #tag.", {Tag(value="tag")}],
     ["[ ] Tags: #tag1/#tag2", {Tag(value="tag1"), Tag(value="tag2")}],
+    ["[ ] Tags: #tag1,#tag2", {Tag(value="tag1"), Tag(value="tag2")}],
     ["[ ] #t-a-g!", {Tag(value="t-a-g")}],
     ["[ ] #--tag--?", {Tag(value="--tag--")}],
     ["[ ] #--tag--:text", {Tag(value="--tag--")}],

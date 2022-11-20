@@ -56,22 +56,22 @@ def parse_tags(text):
     matches = re.findall(SINGLE_QUOTED_KEY_VALUE_TAG_PATTERN, temp)
     temp = re.sub(SINGLE_QUOTED_KEY_VALUE_TAG_PATTERN, "", temp)
     for match in matches:
-        tags.add(Tag(key=match[1], value=match[2].lstrip("'").rstrip("'")))
+        tags.add(Tag(key=match[0], value=match[1].lstrip("'").rstrip("'")))
 
     matches = re.findall(DOUBLE_QUOTED_KEY_VALUE_TAG_PATTERN, temp)
     temp = re.sub(DOUBLE_QUOTED_KEY_VALUE_TAG_PATTERN, "", temp)
     for match in matches:
-        tags.add(Tag(key=match[1], value=match[2].lstrip('"').rstrip('"')))
+        tags.add(Tag(key=match[0], value=match[1].lstrip('"').rstrip('"')))
 
     matches = re.findall(UNQUOTED_KEY_VALUE_TAG_PATTERN, temp)
     temp = re.sub(UNQUOTED_KEY_VALUE_TAG_PATTERN, "", temp)
     for match in matches:
-        tags.add(Tag(key=match[1], value=match[2]))
+        tags.add(Tag(key=match[0], value=match[1]))
 
     matches = re.findall(VALUE_ONLY_TAG_PATTERN, temp)
     temp = re.sub(VALUE_ONLY_TAG_PATTERN, "", temp)
     for match in matches:
-        tags.add(Tag(value=match[1]))
+        tags.add(Tag(value=match))
 
     return tags
 
