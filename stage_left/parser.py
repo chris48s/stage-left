@@ -53,21 +53,25 @@ def parse_tags(text):
     temp = text
     tags = set()
 
+    # #key='value'
     matches = re.findall(SINGLE_QUOTED_KEY_VALUE_TAG_PATTERN, temp)
     temp = re.sub(SINGLE_QUOTED_KEY_VALUE_TAG_PATTERN, "", temp)
     for match in matches:
         tags.add(Tag(key=match[0], value=match[1].lstrip("'").rstrip("'")))
 
+    # #key="value"
     matches = re.findall(DOUBLE_QUOTED_KEY_VALUE_TAG_PATTERN, temp)
     temp = re.sub(DOUBLE_QUOTED_KEY_VALUE_TAG_PATTERN, "", temp)
     for match in matches:
         tags.add(Tag(key=match[0], value=match[1].lstrip('"').rstrip('"')))
 
+    # #key=value
     matches = re.findall(UNQUOTED_KEY_VALUE_TAG_PATTERN, temp)
     temp = re.sub(UNQUOTED_KEY_VALUE_TAG_PATTERN, "", temp)
     for match in matches:
         tags.add(Tag(key=match[0], value=match[1]))
 
+    # #value
     matches = re.findall(VALUE_ONLY_TAG_PATTERN, temp)
     temp = re.sub(VALUE_ONLY_TAG_PATTERN, "", temp)
     for match in matches:
