@@ -1,18 +1,8 @@
 from datetime import date
+from pathlib import Path
 
-from stage_left.parser import parse_text
+from stage_left.parser import parse_file, parse_text
 from stage_left.types import Group, Item, State, Tag
-
-document = """
-[ ] Item 1
-[ ] Item 2
-
-Group
-[ ] This #item #has=tags
-[ ] Do this soon -> 2022-01-31
-[ ] !! This is important
-[ ] ! All #the=things -> 2022-12
-"""
 
 
 def test_integration():
@@ -70,4 +60,9 @@ def test_integration():
             title="Group",
         ),
     ]
-    assert parse_text(document) == expected
+    with open(Path(".") / "tests" / "fixtures" / "example.xit") as fp:
+        assert parse_file(fp) == expected
+
+        fp.seek(0)
+        document = fp.read()
+        assert parse_text(document) == expected

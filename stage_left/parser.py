@@ -172,9 +172,30 @@ def parse_lines(lines):
 
 
 def parse_text(text):
+    """Parse a [x]it string
+
+    Args:
+        text (str): String containing a todo list in [x]it format
+
+    Returns:
+        list[Group]
+
+    Raises:
+        ParseError
+    """
     return parse_lines(classify_lines(text.splitlines()))
 
 
-def parse_file(file_):
-    # TODO
-    pass
+def parse_file(fp):
+    """Parse a [x]it file
+
+    Args:
+        fp (IO): File-like object containing a todo list in [x]it format
+
+    Returns:
+        list[Group]
+
+    Raises:
+        ParseError
+    """
+    return parse_text(fp.read())
