@@ -1,5 +1,21 @@
 import sys
 import unicodedata
+from functools import partial
+
+from stage_left import date_parsers
+
+_DATE_PARSERS = {
+    r"(\d{4}-\d{2}-\d{2})": partial(date_parsers.parse_ymd, "%Y-%m-%d"),
+    r"(\d{4}/\d{2}/\d{2})": partial(date_parsers.parse_ymd, "%Y/%m/%d"),
+    r"(\d{4}-\d{2})": partial(date_parsers.parse_ym, "%Y-%m"),
+    r"(\d{4}/\d{2})": partial(date_parsers.parse_ym, "%Y/%m"),
+    r"(\d{4}-W\d{2})": partial(date_parsers.parse_w, "%Y-W%W"),
+    r"(\d{4}/W\d{2})": partial(date_parsers.parse_w, "%Y/W%W"),
+    r"(\d{4}-Q\d{1})": date_parsers.parse_q,
+    r"(\d{4}/Q\d{1})": date_parsers.parse_q,
+    r"(\d{4})": date_parsers.parse_y,
+}
+
 
 _UNICODE_PUNCTUATION = [
     chr(i)
@@ -10,21 +26,10 @@ _DATE_UNICODE_PUNCTUATION = "".join(
     [c for c in _UNICODE_PUNCTUATION if c not in ["-", "/"]]
 )
 
-_DATE_FORMATS = [
-    # TODO:
-    # these regular expressions are quite crude
-    # e.g: they will accept 2022-02-31 as a "date"
-    # the next step to making this better
-    # is to try and parse the matches into a date object
-    r"(\d{4}-\d{2}-\d{2})",  # yyyy-mm-dd
-    r"(\d{4}/\d{2}/\d{2})",  # yyyy/mm/dd
-    r"(\d{4}[-/]\d{2})",  # yyyy-mm or yyyy/mm
-    r"(\d{4}[-/]W\d{2})",  # yyyy-Www or yyyy/Www
-    r"(\d{4}[-/]Q\d{1})",  # yyyy-Qq or yyyy/Qq
-    r"(\d{4})",  # yyyy
-]
-
 _DUE_DATE_START = r"([ " + _DATE_UNICODE_PUNCTUATION + r"]|^)-> "
 _DUE_DATE_END = r"(?=[ " + _DATE_UNICODE_PUNCTUATION + r"]|$)"
 
-DUE_DATE_PATTERNS = [_DUE_DATE_START + DF + _DUE_DATE_END for DF in _DATE_FORMATS]
+DUE_DATE_PATTERNS = {
+    _DUE_DATE_START + regex + _DUE_DATE_END: parser
+    for regex, parser in _DATE_PARSERS.items()
+}

@@ -1,4 +1,5 @@
 from dataclasses import dataclass, field
+from datetime import date
 from enum import Enum
 from typing import Optional
 
@@ -30,9 +31,7 @@ class Item:
     description: str
     tags: set = field(default_factory=set)
     priority: int = 0
-    # TODO: this is a str for now,
-    # investigate making it a datetime later
-    due_date: Optional[str] = None
+    due_date: Optional[date] = None
 
 
 @dataclass(frozen=True)

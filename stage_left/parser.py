@@ -109,10 +109,13 @@ def parse_priority(text):
 
 
 def parse_due_date(text):
-    for regex in DUE_DATE_PATTERNS:
+    for regex, parser in DUE_DATE_PATTERNS.items():
         matches = re.search(regex, text)
         if matches:
-            return matches[2]
+            try:
+                return parser(matches[2])
+            except ValueError as e:
+                raise ParseError(str(e)) from e
     return None
 
 
