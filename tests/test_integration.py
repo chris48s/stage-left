@@ -1,7 +1,7 @@
 from datetime import date
 from pathlib import Path
 
-from stage_left.parser import parse_file, parse_text
+from stage_left import parse_file, parse_text
 from stage_left.types import Group, Item, State, Tag
 
 

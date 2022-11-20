@@ -1,7 +1,7 @@
 import pytest
 
-from stage_left.parser import parse_text
-from stage_left.types import Group, Item, ParseError, State
+from stage_left import ParseError, parse_text
+from stage_left.types import Group, Item, State
 
 valid_groups = """
 [ ] Item 1 of group
