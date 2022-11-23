@@ -7,7 +7,7 @@
 ![Python Compatibility](https://img.shields.io/badge/dynamic/json?query=info.requires_python&label=python&url=https%3A%2F%2Fpypi.org%2Fpypi%2Fstage-left%2Fjson)
 ![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
 
-[[x]it!](https://xit.jotaen.net/) is a plain-text file format for todos and check lists. Stage-left parses [x]it! documents into rich python objects.
+[[x]it!](https://xit.jotaen.net/) is a plain-text file format for todos and check lists. Stage-left parses [x]it! documents into python data structures.
 
 ## Installation
 

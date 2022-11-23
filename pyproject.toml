@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "stage-left"
 version = "0.1.1"
-description = ""
+description = "Parse [x]it! documents into python data structures"
 authors = ["chris48s"]
 license = "MIT"
 readme = "README.md"
