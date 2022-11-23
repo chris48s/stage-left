@@ -28,6 +28,7 @@ invalid_priorities = [
     "[ ]    . Do something",
     "[ ] .!. Invalid",
     "[ ] !.! Invalid",
+    "[ ] !.!. Invalid",
 ]
 
 

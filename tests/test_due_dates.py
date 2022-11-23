@@ -2,6 +2,7 @@ from datetime import date
 
 import pytest
 
+from stage_left import ParseError
 from stage_left.parser import classify_lines, parse_item
 
 valid_date_on_continuation_line = """[ ] Do something until ...
@@ -54,3 +55,8 @@ def test_due_dates_valid(item):
 def test_priorities_invalid(item):
     parsed_item = parse_item(classify_lines([item]))
     assert parsed_item.due_date is None
+
+
+def test_priorities_exception():
+    with pytest.raises(ParseError):
+        parse_item(classify_lines(["[ ] Not a real date -> 2022-02-31"]))
