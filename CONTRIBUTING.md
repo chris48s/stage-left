@@ -13,3 +13,5 @@ Development Tasks:
 * Run the test suite: `make test`
 * Run lint checks: `make lint`
 * Auto-format: `make format`
+* Build the docs: `make build-docs`
+* Deploy the docs: `make deploy-docs`

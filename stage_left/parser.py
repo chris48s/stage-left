@@ -178,7 +178,7 @@ def parse_text(text):
         text (str): String containing a todo list in [x]it format
 
     Returns:
-        list[Group]
+        List[Group]: A list of group objects
 
     Raises:
         ParseError
@@ -193,7 +193,7 @@ def parse_file(fp):
         fp (IO): File-like object containing a todo list in [x]it format
 
     Returns:
-        list[Group]
+        List[Group]: A list of group objects
 
     Raises:
         ParseError
