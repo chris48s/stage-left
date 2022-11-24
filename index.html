@@ -14,7 +14,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -72,10 +74,10 @@
            <div itemprop="articleBody">
              
   <section id="stage-left">
-<h1>stage-left<a class="headerlink" href="#stage-left" title="Permalink to this headline"></a></h1>
+<h1>stage-left<a class="headerlink" href="#stage-left" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://xit.jotaen.net/">[x]it!</a> is a plain-text file format for todos and check lists. Stage-left parses [x]it! documents into python data structures.</p>
 <section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h2>
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">stage</span><span class="o">-</span><span class="n">left</span>
 </pre></div>
 </div>
@@ -88,9 +90,40 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reference.html">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#module-stage_left">Parser functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-stage_left">Parser functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#stage_left.parse_file"><code class="docutils literal notranslate"><span class="pre">parse_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#stage_left.parse_text"><code class="docutils literal notranslate"><span class="pre">parse_text()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="reference.html#exceptions">Exceptions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#module-stage_left.types">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-stage_left.types">Data Types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#stage_left.types.State"><code class="docutils literal notranslate"><span class="pre">State</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#stage_left.types.State.OPEN"><code class="docutils literal notranslate"><span class="pre">State.OPEN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#stage_left.types.State.CHECKED"><code class="docutils literal notranslate"><span class="pre">State.CHECKED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#stage_left.types.State.ONGOING"><code class="docutils literal notranslate"><span class="pre">State.ONGOING</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#stage_left.types.State.OBSOLETE"><code class="docutils literal notranslate"><span class="pre">State.OBSOLETE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#stage_left.types.Tag"><code class="docutils literal notranslate"><span class="pre">Tag</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#stage_left.types.Tag.value"><code class="docutils literal notranslate"><span class="pre">Tag.value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#stage_left.types.Tag.key"><code class="docutils literal notranslate"><span class="pre">Tag.key</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#stage_left.types.Item"><code class="docutils literal notranslate"><span class="pre">Item</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#stage_left.types.Item.state"><code class="docutils literal notranslate"><span class="pre">Item.state</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#stage_left.types.Item.description"><code class="docutils literal notranslate"><span class="pre">Item.description</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#stage_left.types.Item.tags"><code class="docutils literal notranslate"><span class="pre">Item.tags</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#stage_left.types.Item.priority"><code class="docutils literal notranslate"><span class="pre">Item.priority</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#stage_left.types.Item.due_date"><code class="docutils literal notranslate"><span class="pre">Item.due_date</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="reference.html#stage_left.types.Group"><code class="docutils literal notranslate"><span class="pre">Group</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#stage_left.types.Group.title"><code class="docutils literal notranslate"><span class="pre">Group.title</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference.html#stage_left.types.Group.items"><code class="docutils literal notranslate"><span class="pre">Group.items</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

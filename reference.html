@@ -14,7 +14,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -40,9 +42,40 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage Examples</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-stage_left">Parser functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-stage_left">Parser functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stage_left.parse_file"><code class="docutils literal notranslate"><span class="pre">parse_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stage_left.parse_text"><code class="docutils literal notranslate"><span class="pre">parse_text()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#exceptions">Exceptions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-stage_left.types">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-stage_left.types">Data Types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stage_left.types.State"><code class="docutils literal notranslate"><span class="pre">State</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#stage_left.types.State.OPEN"><code class="docutils literal notranslate"><span class="pre">State.OPEN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stage_left.types.State.CHECKED"><code class="docutils literal notranslate"><span class="pre">State.CHECKED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stage_left.types.State.ONGOING"><code class="docutils literal notranslate"><span class="pre">State.ONGOING</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stage_left.types.State.OBSOLETE"><code class="docutils literal notranslate"><span class="pre">State.OBSOLETE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#stage_left.types.Tag"><code class="docutils literal notranslate"><span class="pre">Tag</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#stage_left.types.Tag.value"><code class="docutils literal notranslate"><span class="pre">Tag.value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stage_left.types.Tag.key"><code class="docutils literal notranslate"><span class="pre">Tag.key</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#stage_left.types.Item"><code class="docutils literal notranslate"><span class="pre">Item</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#stage_left.types.Item.state"><code class="docutils literal notranslate"><span class="pre">Item.state</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stage_left.types.Item.description"><code class="docutils literal notranslate"><span class="pre">Item.description</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stage_left.types.Item.tags"><code class="docutils literal notranslate"><span class="pre">Item.tags</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stage_left.types.Item.priority"><code class="docutils literal notranslate"><span class="pre">Item.priority</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stage_left.types.Item.due_date"><code class="docutils literal notranslate"><span class="pre">Item.due_date</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#stage_left.types.Group"><code class="docutils literal notranslate"><span class="pre">Group</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#stage_left.types.Group.title"><code class="docutils literal notranslate"><span class="pre">Group.title</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stage_left.types.Group.items"><code class="docutils literal notranslate"><span class="pre">Group.items</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -77,22 +110,22 @@
            <div itemprop="articleBody">
              
   <section id="api-reference">
-<h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline"></a></h1>
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this heading"></a></h1>
 <section id="module-stage_left">
-<span id="parser-functions"></span><h2>Parser functions<a class="headerlink" href="#module-stage_left" title="Permalink to this headline"></a></h2>
+<span id="parser-functions"></span><h2>Parser functions<a class="headerlink" href="#module-stage_left" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="stage_left.parse_file">
 <span class="sig-prename descclassname"><span class="pre">stage_left.</span></span><span class="sig-name descname"><span class="pre">parse_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stage_left.parse_file" title="Permalink to this definition"></a></dt>
 <dd><p>Parse a [x]it file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>fp</strong> (<em>IO</em>) – File-like object containing a todo list in [x]it format</p>
+<dd class="field-odd"><p><strong>fp</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">IO</span></code>) – File-like object containing a todo list in [x]it format</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A list of group objects</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="#stage_left.types.Group" title="stage_left.types.Group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a>]</p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>List[<a class="reference internal" href="#stage_left.types.Group" title="stage_left.types.Group">Group</a>]</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A list of group objects</p>
 </dd>
 <dt class="field-even">Raises</dt>
 <dd class="field-even"><p><strong>ParseError</strong> – </p>
@@ -106,13 +139,13 @@
 <dd><p>Parse a [x]it string</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – String containing a todo list in [x]it format</p>
+<dd class="field-odd"><p><strong>text</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – String containing a todo list in [x]it format</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A list of group objects</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="#stage_left.types.Group" title="stage_left.types.Group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a>]</p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>List[<a class="reference internal" href="#stage_left.types.Group" title="stage_left.types.Group">Group</a>]</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A list of group objects</p>
 </dd>
 <dt class="field-even">Raises</dt>
 <dd class="field-even"><p><strong>ParseError</strong> – </p>
@@ -122,7 +155,7 @@
 
 </section>
 <section id="exceptions">
-<h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline"></a></h2>
+<h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this heading"></a></h2>
 <dl class="py exception">
 <dt class="sig sig-object py">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stage_left.</span></span><span class="sig-name descname"><span class="pre">ParseError</span></span></dt>
@@ -130,37 +163,73 @@
 
 </section>
 <section id="module-stage_left.types">
-<span id="data-types"></span><h2>Data Types<a class="headerlink" href="#module-stage_left.types" title="Permalink to this headline"></a></h2>
+<span id="data-types"></span><h2>Data Types<a class="headerlink" href="#module-stage_left.types" title="Permalink to this heading"></a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="stage_left.types.Group">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stage_left.types.</span></span><span class="sig-name descname"><span class="pre">Group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">title:</span> <span class="pre">Optional[str],</span> <span class="pre">items:</span> <span class="pre">List[stage_left.types.Item]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stage_left.types.Group" title="Permalink to this definition"></a></dt>
-<dd><p>A group of one or more Items</p>
+<dt class="sig sig-object py" id="stage_left.types.State">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stage_left.types.</span></span><span class="sig-name descname"><span class="pre">State</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stage_left.types.State" title="Permalink to this definition"></a></dt>
+<dd><p>State of an Item</p>
 <dl class="field-list simple">
 <dt class="field-odd">Ref</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/main/Specification.md#group">https://github.com/jotaen/xit/blob/main/Specification.md#group</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/main/Specification.md#checkbox">https://github.com/jotaen/xit/blob/main/Specification.md#checkbox</a></p>
 </dd>
 </dl>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="stage_left.types.Group.items">
-<span class="sig-name descname"><span class="pre">items</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#stage_left.types.Item" title="stage_left.types.Item"><span class="pre">stage_left.types.Item</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#stage_left.types.Group.items" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="stage_left.types.State.OPEN">
+<span class="sig-name descname"><span class="pre">OPEN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'</span> <span class="pre">'</span></em><a class="headerlink" href="#stage_left.types.State.OPEN" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="stage_left.types.Group.title">
-<span class="sig-name descname"><span class="pre">title</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#stage_left.types.Group.title" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="stage_left.types.State.CHECKED">
+<span class="sig-name descname"><span class="pre">CHECKED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'x'</span></em><a class="headerlink" href="#stage_left.types.State.CHECKED" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="stage_left.types.State.ONGOING">
+<span class="sig-name descname"><span class="pre">ONGOING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'&#64;'</span></em><a class="headerlink" href="#stage_left.types.State.ONGOING" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="stage_left.types.State.OBSOLETE">
+<span class="sig-name descname"><span class="pre">OBSOLETE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'~'</span></em><a class="headerlink" href="#stage_left.types.State.OBSOLETE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="stage_left.types.Tag">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stage_left.types.</span></span><span class="sig-name descname"><span class="pre">Tag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stage_left.types.Tag" title="Permalink to this definition"></a></dt>
+<dd><p>An annotation for categorising or filtering the data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Ref</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/main/Specification.md#tag">https://github.com/jotaen/xit/blob/main/Specification.md#tag</a></p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="stage_left.types.Tag.value">
+<span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#stage_left.types.Tag.value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="stage_left.types.Tag.key">
+<span class="sig-name descname"><span class="pre">key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#stage_left.types.Tag.key" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="stage_left.types.Item">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stage_left.types.</span></span><span class="sig-name descname"><span class="pre">Item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state:</span> <span class="pre">stage_left.types.State</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tags:</span> <span class="pre">Set[stage_left.types.Tag]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">priority:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">due_date:</span> <span class="pre">Optional[datetime.date]</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stage_left.types.Item" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stage_left.types.</span></span><span class="sig-name descname"><span class="pre">Item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tags=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">priority=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">due_date=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stage_left.types.Item" title="Permalink to this definition"></a></dt>
 <dd><p>An entry in a checklist or todo list</p>
 <dl class="field-list simple">
 <dt class="field-odd">Ref</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/main/Specification.md#item">https://github.com/jotaen/xit/blob/main/Specification.md#item</a></p>
 </dd>
 </dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="stage_left.types.Item.state">
+<span class="sig-name descname"><span class="pre">state</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#stage_left.types.State" title="stage_left.types.State"><span class="pre">State</span></a></em><a class="headerlink" href="#stage_left.types.Item.state" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="stage_left.types.Item.description">
 <span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#stage_left.types.Item.description" title="Permalink to this definition"></a></dt>
@@ -173,18 +242,9 @@
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="stage_left.types.Item.due_date">
-<span class="sig-name descname"><span class="pre">due_date</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime.date</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#stage_left.types.Item.due_date" title="Permalink to this definition"></a></dt>
-<dd><p>Date object representing the item due date.
-Due dates specified using the numbered week syntax e.g: <cite>2022-W01</cite> are
-parsed assuming Monday is the first day of the week. All days in a new
-year preceding the first Monday are considered to be in week 0 (<cite>W00</cite>).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Ref</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/main/Specification.md#due-date">https://github.com/jotaen/xit/blob/main/Specification.md#due-date</a></p>
-</dd>
-</dl>
-</dd></dl>
+<dt class="sig sig-object py" id="stage_left.types.Item.tags">
+<span class="sig-name descname"><span class="pre">tags</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#stage_left.types.Tag" title="stage_left.types.Tag"><span class="pre">Tag</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#stage_left.types.Item.tags" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="stage_left.types.Item.priority">
@@ -198,65 +258,38 @@ year preceding the first Monday are considered to be in week 0 (<cite>W00</cite>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="stage_left.types.Item.state">
-<span class="sig-name descname"><span class="pre">state</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#stage_left.types.State" title="stage_left.types.State"><span class="pre">stage_left.types.State</span></a></em><a class="headerlink" href="#stage_left.types.Item.state" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="stage_left.types.Item.tags">
-<span class="sig-name descname"><span class="pre">tags</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#stage_left.types.Tag" title="stage_left.types.Tag"><span class="pre">stage_left.types.Tag</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#stage_left.types.Item.tags" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="stage_left.types.Item.due_date">
+<span class="sig-name descname"><span class="pre">due_date</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">date</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#stage_left.types.Item.due_date" title="Permalink to this definition"></a></dt>
+<dd><p>Date object representing the item due date.
+Due dates specified using the numbered week syntax e.g: <cite>2022-W01</cite> are
+parsed assuming Monday is the first day of the week. All days in a new
+year preceding the first Monday are considered to be in week 0 (<cite>W00</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Ref</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/main/Specification.md#due-date">https://github.com/jotaen/xit/blob/main/Specification.md#due-date</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="stage_left.types.State">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stage_left.types.</span></span><span class="sig-name descname"><span class="pre">State</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stage_left.types.State" title="Permalink to this definition"></a></dt>
-<dd><p>State of an Item</p>
+<dt class="sig sig-object py" id="stage_left.types.Group">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stage_left.types.</span></span><span class="sig-name descname"><span class="pre">Group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">items=&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stage_left.types.Group" title="Permalink to this definition"></a></dt>
+<dd><p>A group of one or more Items</p>
 <dl class="field-list simple">
 <dt class="field-odd">Ref</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/main/Specification.md#checkbox">https://github.com/jotaen/xit/blob/main/Specification.md#checkbox</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/main/Specification.md#group">https://github.com/jotaen/xit/blob/main/Specification.md#group</a></p>
 </dd>
 </dl>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="stage_left.types.State.CHECKED">
-<span class="sig-name descname"><span class="pre">CHECKED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'x'</span></em><a class="headerlink" href="#stage_left.types.State.CHECKED" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="stage_left.types.Group.title">
+<span class="sig-name descname"><span class="pre">title</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#stage_left.types.Group.title" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="stage_left.types.State.OBSOLETE">
-<span class="sig-name descname"><span class="pre">OBSOLETE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'~'</span></em><a class="headerlink" href="#stage_left.types.State.OBSOLETE" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="stage_left.types.State.ONGOING">
-<span class="sig-name descname"><span class="pre">ONGOING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'&#64;'</span></em><a class="headerlink" href="#stage_left.types.State.ONGOING" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="stage_left.types.State.OPEN">
-<span class="sig-name descname"><span class="pre">OPEN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'</span> <span class="pre">'</span></em><a class="headerlink" href="#stage_left.types.State.OPEN" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="stage_left.types.Tag">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stage_left.types.</span></span><span class="sig-name descname"><span class="pre">Tag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stage_left.types.Tag" title="Permalink to this definition"></a></dt>
-<dd><p>An annotation for categorising or filtering the data</p>
-<dl class="field-list simple">
-<dt class="field-odd">Ref</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/main/Specification.md#tag">https://github.com/jotaen/xit/blob/main/Specification.md#tag</a></p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="stage_left.types.Tag.key">
-<span class="sig-name descname"><span class="pre">key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#stage_left.types.Tag.key" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="stage_left.types.Tag.value">
-<span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#stage_left.types.Tag.value" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="stage_left.types.Group.items">
+<span class="sig-name descname"><span class="pre">items</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#stage_left.types.Item" title="stage_left.types.Item"><span class="pre">Item</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#stage_left.types.Group.items" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
