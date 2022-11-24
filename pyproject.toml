@@ -8,7 +8,7 @@ readme = "README.md"
 repository = "https://github.com/chris48s/stage-left"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.8"
 
 [tool.poetry.dev-dependencies]
 isort = "^5.10"
@@ -16,7 +16,8 @@ flake8 = "^5.0.4"
 black = "==22.10.0"
 pytest = "^7.2.0"
 pytest-cov = "^4.0.0"
-sphinx = "^4.3.2"
+sphinx = "^5.3.0"
+sphinx-autodoc-typehints = "^1.19.5"
 sphinx_rtd_theme = "^1.1.1"
 myst-parser = "^0.18.1"
 ghp-import = "^2.1.0"

@@ -5,6 +5,7 @@ extensions = [
     "myst_parser",
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",
+    "sphinx_autodoc_typehints",
 ]
 master_doc = "index"
 templates_path = ["_templates"]

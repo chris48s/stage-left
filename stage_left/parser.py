@@ -1,4 +1,5 @@
 import re
+from typing import IO, List
 
 from stage_left.date_patterns import DUE_DATE_PATTERNS
 from stage_left.tag_patterns import (
@@ -171,14 +172,14 @@ def parse_lines(lines):
     return groups
 
 
-def parse_text(text):
+def parse_text(text: str) -> List[Group]:
     """Parse a [x]it string
 
     Args:
-        text (str): String containing a todo list in [x]it format
+        text: String containing a todo list in [x]it format
 
     Returns:
-        List[Group]: A list of group objects
+        A list of group objects
 
     Raises:
         ParseError
@@ -186,14 +187,14 @@ def parse_text(text):
     return parse_lines(classify_lines(text.splitlines()))
 
 
-def parse_file(fp):
+def parse_file(fp: IO) -> List[Group]:
     """Parse a [x]it file
 
     Args:
-        fp (IO): File-like object containing a todo list in [x]it format
+        fp: File-like object containing a todo list in [x]it format
 
     Returns:
-        List[Group]: A list of group objects
+        A list of group objects
 
     Raises:
         ParseError
