@@ -26,8 +26,8 @@ _DATE_UNICODE_PUNCTUATION = "".join(
     [c for c in _UNICODE_PUNCTUATION if c not in ["-", "/"]]
 )
 
-_DUE_DATE_START = r"([ " + _DATE_UNICODE_PUNCTUATION + r"]|^)-> "
-_DUE_DATE_END = r"(?=[ " + _DATE_UNICODE_PUNCTUATION + r"]|$)"
+_DUE_DATE_START = r"([\s" + _DATE_UNICODE_PUNCTUATION + r"]|^)-> "
+_DUE_DATE_END = r"([\s" + _DATE_UNICODE_PUNCTUATION + r"]|$)"
 
 DUE_DATE_PATTERNS = {
     _DUE_DATE_START + regex + _DUE_DATE_END: parser
