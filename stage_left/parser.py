@@ -173,7 +173,8 @@ def parse_lines(lines):
 
 
 def parse_text(text: str) -> List[Group]:
-    """Parse a [x]it string
+    """
+    Parse a [x]it string
 
     Args:
         text: String containing a todo list in [x]it format
@@ -188,7 +189,8 @@ def parse_text(text: str) -> List[Group]:
 
 
 def parse_file(fp: IO) -> List[Group]:
-    """Parse a [x]it file
+    """
+    Parse a [x]it file
 
     Args:
         fp: File-like object containing a todo list in [x]it format
