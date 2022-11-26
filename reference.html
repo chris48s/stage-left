@@ -67,6 +67,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#stage_left.types.Item.tags"><code class="docutils literal notranslate"><span class="pre">Item.tags</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#stage_left.types.Item.priority"><code class="docutils literal notranslate"><span class="pre">Item.priority</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#stage_left.types.Item.due_date"><code class="docutils literal notranslate"><span class="pre">Item.due_date</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stage_left.types.Item.format_description"><code class="docutils literal notranslate"><span class="pre">Item.format_description()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#stage_left.types.Group"><code class="docutils literal notranslate"><span class="pre">Group</span></code></a><ul>
@@ -233,7 +234,8 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="stage_left.types.Item.description">
 <span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#stage_left.types.Item.description" title="Permalink to this definition"></a></dt>
-<dd><p>Meaning of the Item</p>
+<dd><p>Meaning of the Item. The <a class="reference internal" href="#stage_left.types.Item.description" title="stage_left.types.Item.description"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Item.description</span></code></a> property stores the raw item text,
+but formatting options are available via <a class="reference internal" href="#stage_left.types.Item.format_description" title="stage_left.types.Item.format_description"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Item.format_description()</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Ref</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/main/Specification.md#description">https://github.com/jotaen/xit/blob/main/Specification.md#description</a></p>
@@ -267,6 +269,25 @@ year preceding the first Monday are considered to be in week 0 (<cite>W00</cite>
 <dl class="field-list simple">
 <dt class="field-odd">Ref</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/main/Specification.md#due-date">https://github.com/jotaen/xit/blob/main/Specification.md#due-date</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stage_left.types.Item.format_description">
+<span class="sig-name descname"><span class="pre">format_description</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize_whitespace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_priority</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_due_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stage_left.types.Item.format_description" title="Permalink to this definition"></a></dt>
+<dd><p>Output a formatted version of the item description.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>normalize_whitespace</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Remove duplicate whitespace from the output item description</p></li>
+<li><p><strong>with_priority</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Include priority in the output item description</p></li>
+<li><p><strong>with_tags</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Include tags in the output item description</p></li>
+<li><p><strong>with_due_date</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Include due date in the output item description</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
 </dd>
 </dl>
 </dd></dl>
