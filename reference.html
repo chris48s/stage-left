@@ -54,6 +54,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#stage_left.types.State.CHECKED"><code class="docutils literal notranslate"><span class="pre">State.CHECKED</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#stage_left.types.State.ONGOING"><code class="docutils literal notranslate"><span class="pre">State.ONGOING</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#stage_left.types.State.OBSOLETE"><code class="docutils literal notranslate"><span class="pre">State.OBSOLETE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stage_left.types.State.IN_QUESTION"><code class="docutils literal notranslate"><span class="pre">State.IN_QUESTION</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#stage_left.types.Tag"><code class="docutils literal notranslate"><span class="pre">Tag</span></code></a><ul>
@@ -79,6 +80,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/chris48s/stage-left/blob/master/CHANGELOG.md">Changelog</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">External Links</span></p>
 <ul>
@@ -171,7 +173,7 @@
 <dd><p>State of an Item</p>
 <dl class="field-list simple">
 <dt class="field-odd">Ref</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/main/Specification.md#checkbox">https://github.com/jotaen/xit/blob/main/Specification.md#checkbox</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/v1.1/Specification.md#checkbox">https://github.com/jotaen/xit/blob/v1.1/Specification.md#checkbox</a></p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -194,6 +196,11 @@
 <span class="sig-name descname"><span class="pre">OBSOLETE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'~'</span></em><a class="headerlink" href="#stage_left.types.State.OBSOLETE" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="stage_left.types.State.IN_QUESTION">
+<span class="sig-name descname"><span class="pre">IN_QUESTION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'?'</span></em><a class="headerlink" href="#stage_left.types.State.IN_QUESTION" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -202,7 +209,7 @@
 <dd><p>An annotation for categorising or filtering the data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Ref</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/main/Specification.md#tag">https://github.com/jotaen/xit/blob/main/Specification.md#tag</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/v1.1/Specification.md#tag">https://github.com/jotaen/xit/blob/v1.1/Specification.md#tag</a></p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -223,7 +230,7 @@
 <dd><p>An entry in a checklist or todo list</p>
 <dl class="field-list simple">
 <dt class="field-odd">Ref</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/main/Specification.md#item">https://github.com/jotaen/xit/blob/main/Specification.md#item</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/v1.1/Specification.md#item">https://github.com/jotaen/xit/blob/v1.1/Specification.md#item</a></p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -238,7 +245,7 @@
 but formatting options are available via <a class="reference internal" href="#stage_left.types.Item.format_description" title="stage_left.types.Item.format_description"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Item.format_description()</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Ref</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/main/Specification.md#description">https://github.com/jotaen/xit/blob/main/Specification.md#description</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/v1.1/Specification.md#description">https://github.com/jotaen/xit/blob/v1.1/Specification.md#description</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -254,7 +261,7 @@ but formatting options are available via <a class="reference internal" href="#st
 <dd><p>Int represation of the Item importance</p>
 <dl class="field-list simple">
 <dt class="field-odd">Ref</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/main/Specification.md#priority">https://github.com/jotaen/xit/blob/main/Specification.md#priority</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/v1.1/Specification.md#priority">https://github.com/jotaen/xit/blob/v1.1/Specification.md#priority</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -268,7 +275,7 @@ parsed assuming Monday is the first day of the week. All days in a new
 year preceding the first Monday are considered to be in week 0 (<cite>W00</cite>).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Ref</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/main/Specification.md#due-date">https://github.com/jotaen/xit/blob/main/Specification.md#due-date</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/v1.1/Specification.md#due-date">https://github.com/jotaen/xit/blob/v1.1/Specification.md#due-date</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -300,7 +307,7 @@ year preceding the first Monday are considered to be in week 0 (<cite>W00</cite>
 <dd><p>A group of one or more Items</p>
 <dl class="field-list simple">
 <dt class="field-odd">Ref</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/main/Specification.md#group">https://github.com/jotaen/xit/blob/main/Specification.md#group</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/v1.1/Specification.md#group">https://github.com/jotaen/xit/blob/v1.1/Specification.md#group</a></p>
 </dd>
 </dl>
 <dl class="py attribute">
