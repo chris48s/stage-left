@@ -10,13 +10,14 @@ class State(Enum):
     """
     State of an Item
 
-    :ref: https://github.com/jotaen/xit/blob/main/Specification.md#checkbox
+    :ref: https://github.com/jotaen/xit/blob/v1.1/Specification.md#checkbox
     """
 
     OPEN = " "
     CHECKED = "x"
     ONGOING = "@"
     OBSOLETE = "~"
+    IN_QUESTION = "?"
 
 
 @dataclass(frozen=True)
@@ -24,7 +25,7 @@ class Tag:
     """
     An annotation for categorising or filtering the data
 
-    :ref: https://github.com/jotaen/xit/blob/main/Specification.md#tag
+    :ref: https://github.com/jotaen/xit/blob/v1.1/Specification.md#tag
     """
 
     value: str = ""
@@ -36,7 +37,7 @@ class Item:
     """
     An entry in a checklist or todo list
 
-    :ref: https://github.com/jotaen/xit/blob/main/Specification.md#item
+    :ref: https://github.com/jotaen/xit/blob/v1.1/Specification.md#item
     """
 
     state: State
@@ -46,7 +47,7 @@ class Item:
     Meaning of the Item. The :attr:`Item.description` property stores the raw item text,
     but formatting options are available via :meth:`Item.format_description`.
 
-    :ref: https://github.com/jotaen/xit/blob/main/Specification.md#description
+    :ref: https://github.com/jotaen/xit/blob/v1.1/Specification.md#description
     """
 
     tags: Set[Tag] = field(default_factory=set)
@@ -55,7 +56,7 @@ class Item:
     """
     Int represation of the Item importance
 
-    :ref: https://github.com/jotaen/xit/blob/main/Specification.md#priority
+    :ref: https://github.com/jotaen/xit/blob/v1.1/Specification.md#priority
     """
 
     due_date: Optional[date] = None
@@ -65,7 +66,7 @@ class Item:
     parsed assuming Monday is the first day of the week. All days in a new
     year preceding the first Monday are considered to be in week 0 (`W00`).
 
-    :ref: https://github.com/jotaen/xit/blob/main/Specification.md#due-date
+    :ref: https://github.com/jotaen/xit/blob/v1.1/Specification.md#due-date
     """
 
     def format_description(
@@ -109,7 +110,7 @@ class Group:
     """
     A group of one or more Items
 
-    :ref: https://github.com/jotaen/xit/blob/main/Specification.md#group
+    :ref: https://github.com/jotaen/xit/blob/v1.1/Specification.md#group
     """
 
     title: Optional[str]

@@ -13,6 +13,7 @@ pip install stage-left
 
 usage
 reference
+Changelog <https://github.com/chris48s/stage-left/blob/master/CHANGELOG.md>
 ```
 
 ```{toctree}

@@ -7,6 +7,7 @@ valid_items = """[ ] Open
 [x] Checked
 [@] Ongoing
 [~] Obsolete
+[?] In Question
 [ ] Do this
 [ ]   Do this
 [ ]
@@ -93,6 +94,13 @@ def test_items_valid():
                 Item(
                     state=State.OBSOLETE,
                     description="Obsolete",
+                    tags=set(),
+                    priority=0,
+                    due_date=None,
+                ),
+                Item(
+                    state=State.IN_QUESTION,
+                    description="In Question",
                     tags=set(),
                     priority=0,
                     due_date=None,
