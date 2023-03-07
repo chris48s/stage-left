@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>API Reference &mdash; stage-left  documentation</title>
@@ -11,10 +11,8 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -125,16 +123,16 @@
 <span class="sig-prename descclassname"><span class="pre">stage_left.</span></span><span class="sig-name descname"><span class="pre">parse_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stage_left.parse_file" title="Permalink to this definition"></a></dt>
 <dd><p>Parse a [x]it file</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>fp</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">IO</span></code>) – File-like object containing a todo list in [x]it format</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="#stage_left.types.Group" title="stage_left.types.Group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a>]</p>
 </dd>
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A list of group objects</p>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ParseError</strong> – </p>
 </dd>
 </dl>
@@ -145,16 +143,16 @@
 <span class="sig-prename descclassname"><span class="pre">stage_left.</span></span><span class="sig-name descname"><span class="pre">parse_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stage_left.parse_text" title="Permalink to this definition"></a></dt>
 <dd><p>Parse a [x]it string</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>text</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – String containing a todo list in [x]it format</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="#stage_left.types.Group" title="stage_left.types.Group"><code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code></a>]</p>
 </dd>
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A list of group objects</p>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ParseError</strong> – </p>
 </dd>
 </dl>
@@ -176,7 +174,7 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stage_left.types.</span></span><span class="sig-name descname"><span class="pre">State</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stage_left.types.State" title="Permalink to this definition"></a></dt>
 <dd><p>State of an Item</p>
 <dl class="field-list simple">
-<dt class="field-odd">Ref</dt>
+<dt class="field-odd">Ref<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/v1.1/Specification.md#checkbox">https://github.com/jotaen/xit/blob/v1.1/Specification.md#checkbox</a></p>
 </dd>
 </dl>
@@ -212,7 +210,7 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stage_left.types.</span></span><span class="sig-name descname"><span class="pre">Tag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stage_left.types.Tag" title="Permalink to this definition"></a></dt>
 <dd><p>An annotation for categorising or filtering the data</p>
 <dl class="field-list simple">
-<dt class="field-odd">Ref</dt>
+<dt class="field-odd">Ref<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/v1.1/Specification.md#tag">https://github.com/jotaen/xit/blob/v1.1/Specification.md#tag</a></p>
 </dd>
 </dl>
@@ -233,7 +231,7 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stage_left.types.</span></span><span class="sig-name descname"><span class="pre">Item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tags=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">priority=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">due_date=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stage_left.types.Item" title="Permalink to this definition"></a></dt>
 <dd><p>An entry in a checklist or todo list</p>
 <dl class="field-list simple">
-<dt class="field-odd">Ref</dt>
+<dt class="field-odd">Ref<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/v1.1/Specification.md#item">https://github.com/jotaen/xit/blob/v1.1/Specification.md#item</a></p>
 </dd>
 </dl>
@@ -248,7 +246,7 @@
 <dd><p>Meaning of the Item. The <a class="reference internal" href="#stage_left.types.Item.description" title="stage_left.types.Item.description"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Item.description</span></code></a> property stores the raw item text,
 but formatting options are available via <a class="reference internal" href="#stage_left.types.Item.format_description" title="stage_left.types.Item.format_description"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Item.format_description()</span></code></a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Ref</dt>
+<dt class="field-odd">Ref<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/v1.1/Specification.md#description">https://github.com/jotaen/xit/blob/v1.1/Specification.md#description</a></p>
 </dd>
 </dl>
@@ -264,7 +262,7 @@ but formatting options are available via <a class="reference internal" href="#st
 <span class="sig-name descname"><span class="pre">priority</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#stage_left.types.Item.priority" title="Permalink to this definition"></a></dt>
 <dd><p>Int represation of the Item importance</p>
 <dl class="field-list simple">
-<dt class="field-odd">Ref</dt>
+<dt class="field-odd">Ref<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/v1.1/Specification.md#priority">https://github.com/jotaen/xit/blob/v1.1/Specification.md#priority</a></p>
 </dd>
 </dl>
@@ -278,7 +276,7 @@ Due dates specified using the numbered week syntax e.g: <cite>2022-W01</cite> ar
 parsed assuming Monday is the first day of the week. All days in a new
 year preceding the first Monday are considered to be in week 0 (<cite>W00</cite>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Ref</dt>
+<dt class="field-odd">Ref<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/v1.1/Specification.md#due-date">https://github.com/jotaen/xit/blob/v1.1/Specification.md#due-date</a></p>
 </dd>
 </dl>
@@ -289,7 +287,7 @@ year preceding the first Monday are considered to be in week 0 (<cite>W00</cite>
 <span class="sig-name descname"><span class="pre">format_description</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize_whitespace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_priority</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_due_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stage_left.types.Item.format_description" title="Permalink to this definition"></a></dt>
 <dd><p>Output a formatted version of the item description.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>normalize_whitespace</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Remove duplicate whitespace from the output item description</p></li>
 <li><p><strong>with_priority</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Include priority in the output item description</p></li>
@@ -297,7 +295,7 @@ year preceding the first Monday are considered to be in week 0 (<cite>W00</cite>
 <li><p><strong>with_due_date</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Include due date in the output item description</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
 </dd>
 </dl>
@@ -310,7 +308,7 @@ year preceding the first Monday are considered to be in week 0 (<cite>W00</cite>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stage_left.types.</span></span><span class="sig-name descname"><span class="pre">Group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">items=&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stage_left.types.Group" title="Permalink to this definition"></a></dt>
 <dd><p>A group of one or more Items</p>
 <dl class="field-list simple">
-<dt class="field-odd">Ref</dt>
+<dt class="field-odd">Ref<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://github.com/jotaen/xit/blob/v1.1/Specification.md#group">https://github.com/jotaen/xit/blob/v1.1/Specification.md#group</a></p>
 </dd>
 </dl>
