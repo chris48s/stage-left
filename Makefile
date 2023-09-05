@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-.PHONY: help build-docs deploy-docs format install lint test release
+.PHONY: help build-docs deploy-docs format install lint test build release
 
 help:
 	@grep '^\.PHONY' Makefile | cut -d' ' -f2- | tr ' ' '\n'
@@ -25,6 +25,9 @@ lint:
 
 test:
 	poetry run pytest --cov=stage_left --cov-report term --cov-report xml ./tests
+
+build:
+	poetry build
 
 release:
 	# usage: `make release version=0.0.0`
