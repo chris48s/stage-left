@@ -8,10 +8,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Get python versions
+        uses: chris48s/satisfying-python
+        id: python-versions
+
+      - name: Set up Python ${{ steps.hello-world.outputs.min}}
         uses: actions/setup-python@v4
         with:
-          python-version: 3.9
+          python-version: ${{ steps.hello-world.outputs.min}}
+
+      - name: Show python version
+        run: python --version
 
       - name: Install dependencies
         run: |
