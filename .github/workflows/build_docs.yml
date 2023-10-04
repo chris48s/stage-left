@@ -12,10 +12,10 @@ jobs:
         uses: chris48s/satisfying-python@main
         id: python-versions
 
-      - name: Set up Python ${{ steps.hello-world.outputs.min}}
+      - name: Set up Python ${{ steps.python-versions.outputs.min}}
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ steps.hello-world.outputs.min}}
+          python-version: ${{ steps.python-versions.outputs.min}}
 
       - name: Show python version
         run: python --version
