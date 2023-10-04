@@ -9,7 +9,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Get python versions
-        uses: chris48s/satisfying-python
+        uses: chris48s/satisfying-python@main
         id: python-versions
 
       - name: Set up Python ${{ steps.hello-world.outputs.min}}
