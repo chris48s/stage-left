@@ -40,7 +40,7 @@ insufficient_indent2 = """[ ] The next line is ...
    invalid"""
 
 tab_indent = """[ ] The next line is ...
-	invalid (it’s a tab)"""  # noqa:W191,E101
+	invalid (it’s a tab)"""  # noqa:W191,E101,E261
 
 invalid_items = [
     "[*] Invalid",
