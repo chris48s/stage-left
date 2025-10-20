@@ -1,8 +1,12 @@
 SHELL := /bin/bash
-.PHONY: help build-docs deploy-docs format install lint test build release
+.PHONY: help env build-docs deploy-docs format install lint test build release
 
 help:
 	@grep '^\.PHONY' Makefile | cut -d' ' -f2- | tr ' ' '\n'
+
+# usage: source $(make env)
+env:
+	@poetry env activate | cut -d' ' -f2
 
 build-docs:
 	cd docs && poetry run make clean html
