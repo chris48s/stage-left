@@ -75,7 +75,7 @@ class Item:
         normalize_whitespace: bool = False,
         with_priority: bool = True,
         with_tags: bool = True,
-        with_due_date: bool = True
+        with_due_date: bool = True,
     ) -> str:
         """
         Output a formatted version of the item description.
