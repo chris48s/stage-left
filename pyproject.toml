@@ -1,6 +1,6 @@
 [project]
 name = "stage-left"
-version = "0.2.2"
+version = "0.3.0"
 description = "Parse [x]it! documents into python data structures"
 authors = [{name = "chris48s"}]
 license = "MIT"

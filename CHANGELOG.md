@@ -1,5 +1,10 @@
 # Changelog
 
+## 📦 0.3.0
+
+* Drop testing on python < 3.10
+* Tested on python 3.13, 3.14
+
 ## 📦 0.2.2
 
 * Convert python requirement to open range
