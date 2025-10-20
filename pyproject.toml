@@ -13,9 +13,9 @@ Source = "https://github.com/chris48s/stage-left"
 Documentation = "https://chris48s.github.io/stage-left"
 
 [tool.poetry.group.dev.dependencies]
-isort = "5.13.2"
+isort = "7.0.0"
 flake8 = "7.3.0"
-black = "24.8.0"
+black = "25.9.0"
 pytest = "8.4.2"
 pytest-cov = "7.0.0"
 sphinx = "7.1.2"
